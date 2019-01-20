@@ -1,15 +1,19 @@
+#! /usr/bin/env racket
+#lang racket
+
 (require 2htdp/image)
 (require racket/trace)
 
-(define my-img (bitmap "/home/daniel/Pictures/space.png"))
+(define (open-img my-img)
+  (bitmap/file my-img))
 
 (define (half-width my-img)
   (flip-horizontal
-   (scale/xy (/ pi 10) 1 my-img)))
+   (scale/xy .5 1 my-img)))
 
 (define (half-height my-img)
   (flip-vertical
-   (scale/xy 1 (/ pi 10) my-img)))
+   (scale/xy 1 .5 my-img)))
 
 (define (square-width my-img)
   (if (> (image-width my-img) 10)
@@ -29,4 +33,10 @@
    (beside (flip-horizontal my-img) my-img)
    (flip-vertical (beside (flip-horizontal my-img) my-img))))
 
-(mirror (square-limit my-img))
+(save-image
+ (mirror
+  (square-limit
+   (open-img
+    (first
+     (vector->list (current-command-line-arguments))))))
+ "square-limit.png")
