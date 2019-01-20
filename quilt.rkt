@@ -37,6 +37,5 @@
  (mirror
   (square-limit
    (open-img
-    (first
-     (vector->list (current-command-line-arguments))))))
- "square-limit.png")
+    (first (vector->list (current-command-line-arguments))))))
+ (last (vector->list (current-command-line-arguments))))
