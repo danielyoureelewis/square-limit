@@ -3,4 +3,4 @@ This script automatically generates images similar to [MC Escher's square limit]
 
 usage is:
 
-./quilt.rkt input_file.png output_file.png
+./square-limit.rkt input_file.png output_file.png
